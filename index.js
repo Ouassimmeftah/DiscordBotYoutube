@@ -2,9 +2,7 @@ const fs = require(`fs`);
 
 const Discord = require('discord.js');
 
-const { prefix,token} = require('./config.json');
-
-const {prefixeLienYoutube1,prefixeLienYoutube2} = require(`./config.json`);
+const { prefix,token} = require('../config.json');
 
 const client = new Discord.Client() ;
 
