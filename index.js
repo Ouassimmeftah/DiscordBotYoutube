@@ -4,11 +4,13 @@ const Discord = require('discord.js');
 
 const { prefix,token} = require('./config.json');
 
+const {prefixeLienYoutube1,prefixeLienYoutube2} = require(`./config.json`);
+
 const client = new Discord.Client() ;
 
 client.commands = new Discord.Collection();
 
-const commandfiles = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
+const commandfiles = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js') && !file.startsWith('index'));
 
 
 for(const file of commandfiles ){
@@ -23,7 +25,7 @@ client.once('ready', () => {
 
 
 client.on('message', message => {
-    if(!message.content.startsWith(prefix) || message.author.bot) return;
+    if(!message.content.startsWith(prefix) && message.author.bot) return;
     
     const args = message.content.slice(prefix.length).split(` `);
     const commands = args.shift().toLowerCase();
